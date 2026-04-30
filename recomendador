@@ -1,0 +1,41 @@
+
+
+<form action="" method="POST">
+    <label for="ambiente">Tamanho do Ambiente:</label>
+    <select name="ambiente" id="ambiente" required>
+        <option value="">-- Selecione --</option>
+        <option value="residencial">Casa / Apartamento</option>
+        <option value="pequeno_escritorio">Pequeno Escritório (até 15 funcionários)</option>
+        <option value="data_center">Data Center Corporativo</option>
+    </select>
+    <br><br>
+    <button type="submit">Ver Recomendação</button>
+</form>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $ambiente = $_POST["ambiente"];
+
+    switch ($ambiente) {
+
+        case "residencial":
+            echo "<h3>Roteador Wireless (SOHO)</h3>";
+            echo "<p>Ideal para casas, conectando celulares, TVs e notebooks.</p>";
+            break;
+
+        case "pequeno_escritorio":
+            echo "<h3>Switch Gerenciável de 24 Portas</h3>";
+            echo "<p>Mais estabilidade e segurança para redes cabeadas.</p>";
+            break;
+
+        case "data_center":
+            echo "<h3>Roteador de Borda + Switch Layer 3</h3>";
+            echo "<p>Infraestrutura robusta para alto tráfego e roteamento avançado.</p>";
+            break;
+
+        default:
+            echo "<p>Erro: Ambiente não reconhecido.</p>";
+    }
+}
+?>
